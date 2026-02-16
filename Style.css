@@ -316,4 +316,11 @@ body {
         line-height: 55px;
         font-size: 25px;
     }
+
+}
+
+.hero .fill {
+    background-image: url('../images/jse-building.png');
+    background-size: cover;
+    background-position: center;
 }
