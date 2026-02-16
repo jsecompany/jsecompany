@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | JSE Client Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <div class="logo">
+                <a href="#"><img src="https://clientportal.jse.co.za/Style%20Library/Images/logo-black.svg" alt="JSE Logo"></a>
+            </div>
+            
+            <div class="mobile-toggle" id="mobile-menu">
+                <i class="fa fa-bars"></i>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#">Listed Companies</a></li>
+                <li class="dropdown">
+                    <a href="#">Communications <i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Technical Library <i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Reports <i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Portals <i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li class="utility-link"><a href="#">JSE Website</a></li>
+                <li><a href="#"><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="fill" style="background-image: url('https://clientportal.jse.co.za/Style%20Library/rJSCS/Images/jse%20building.png');">
+            <div class="container">
+                <div class="hero-text">
+                    <h1></h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2>Portal Overview</h2>
+            <p>Welcome to the Johannesburg Stock Exchange Client Portal.
+                Tap into Africa’s trusted capital marketplace
+
+Raising capital shouldn’t be complicated or out of reach. If your business is growing but needs funding, the JSE gives you the platform and visibility to do it right.
+
+The JSE’s Capital Markets enable innovation, capital raising and shared prosperity. As a leading global exchange, the JSE co-creates and unlocks value through innovative products and services that meet the needs of our clients.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://clientportal.jse.co.za/Style%20Library/Images/logo-black.svg" alt="JSE Logo">
+            </div>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>About JSE</h4>
+                    <ul>
+                        <li><a href="#">Our Business</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>Tel: <a href="tel:+27115207000">+27 83 624 0290</a></p>
+                    <p>Email: <a href="mailto:jsecompany72@gmail.com">jsecompany72@gmail.com</a></p>
+                    <div class="address">
+                        JSE Limited<br>
+                        One Exchange Square<br>
+                        Gwen Lane, Sandown
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Subscribe to JSE</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © 2026 JSE | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-box">
+            <h2>Send us a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="userName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="userMessage" rows="5" placeholder="How can we help you?" required></textarea>
+                </div>
+                <button type="button" class="btn-send" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    function sendToWhatsApp() {
+        const name = document.getElementById('userName').value;
+        const message = document.getElementById('userMessage').value;
+        const phoneNumber = "27836240290"; // Replace with your actual number
+
+        if (name && message) {
+            // Encode text for URL
+            const url = `https://wa.me/${phoneNumber}?text=` 
+                + `*Name:* ${encodeURIComponent(name)}%0a`
+                + `*Message:* ${encodeURIComponent(message)}`;
+            
+            window.open(url, '_blank');
+        } else {
+            alert("Please fill in both fields.");
+        }
+    }
+</script>
+    <a href="https://wa.me/27836240290" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">Chat with us</span>
+</a>
+</body>
+</html>
