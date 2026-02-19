@@ -1,166 +1,392 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | JSE Client Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="Style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSE Client Portal</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
+#loginPage{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0b0c1a,#1a1a2e,#0d3b70);display:flex;align-items:center;justify-content:center;z-index:9999;}
+.lcard{background:#fff;border-radius:16px;padding:44px 40px;width:400px;max-width:95vw;box-shadow:0 25px 60px rgba(0,0,0,0.45);}
+.lcard-logo{text-align:center;margin-bottom:22px;}
+.lcard-logo img{height:38px;}
+.lcard h2{font-size:1.5rem;text-align:center;color:#1a1a2e;margin-bottom:6px;font-weight:700;}
+.lcard-sub{text-align:center;color:#888;font-size:13px;margin-bottom:22px;}
+.lerr{background:#fff0f0;border:1px solid #f5a0a0;color:#c0392b;padding:10px 14px;border-radius:6px;font-size:13px;margin-bottom:14px;display:none;}
+.lfield{margin-bottom:16px;}
+.lfield label{display:block;font-size:12px;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
+.lfield input{width:100%;padding:12px 14px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;color:#333;}
+.lfield input:focus{border-color:#1a1a2e;outline:none;}
+.pw-wrap{position:relative;}
+.pw-wrap input{padding-right:42px;}
+.pw-eye{position:absolute;right:13px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;}
+.lbtn{width:100%;padding:14px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;}
+.lbtn:hover{background:#0d3b70;}
+.lnote{text-align:center;color:#bbb;font-size:12px;margin-top:16px;}
+#dashPage{display:none;background:#f0f2f5;min-height:100vh;}
+.dnav{background:#fff;height:68px;display:flex;align-items:center;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.07);}
+.dnav-inner{max-width:1280px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;width:100%;}
+.dnav-logo{height:34px;}
+.dnav-right{display:flex;align-items:center;gap:16px;}
+.dnav-user{font-size:13px;color:#555;}
+.dbtn-out{background:#f5f5f5;border:1px solid #ddd;padding:8px 16px;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit;}
+.dbtn-out:hover{background:#1a1a2e;color:#fff;border-color:#1a1a2e;}
+.dwrap{max-width:1280px;margin:0 auto;padding:32px 28px;}
+.dcards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:26px;}
+.dcard{background:#fff;border-radius:12px;padding:22px;border:1px solid #e5e7eb;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+.dcard.main{background:linear-gradient(135deg,#1a1a2e,#0d3b70);}
+.dcard-lbl{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:8px;}
+.dcard.main .dcard-lbl{color:rgba(255,255,255,0.65);}
+.dcard-val{font-size:1.75rem;font-weight:800;color:#1a1a2e;}
+.dcard.main .dcard-val{color:#fff;}
+.dcard-val.sm{font-size:1.35rem;}
+.dcard-val.grn{color:#16a34a !important;font-size:1.2rem !important;}
+.dbadge{display:inline-block;margin-top:10px;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;}
+.dbadge.g{background:#dcfce7;color:#16a34a;}
+.dbadge.b{background:#eff6ff;color:#1d4ed8;}
+.dcard.main .dbadge{background:rgba(255,255,255,0.15);color:#fff;}
+.dlower{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-bottom:26px;}
+.dpanel{background:#fff;border-radius:12px;padding:26px;border:1px solid #e5e7eb;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+.dpanel-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:18px;}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;}
+.dtable th{background:#f8fafc;padding:10px 12px;text-align:left;font-weight:700;color:#555;font-size:11px;text-transform:uppercase;}
+.dtable td{padding:11px 12px;border-bottom:1px solid #f0f0f0;}
+.dtable tbody tr:hover{background:#fafbff;}
+.pos{color:#16a34a;font-weight:700;}
+.wnote{font-size:13px;color:#666;background:#f8fafc;padding:10px 14px;border-radius:6px;border-left:3px solid #1a1a2e;margin-bottom:18px;}
+.wfield{margin-bottom:15px;}
+.wfield label{display:block;font-size:12px;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.4px;}
+.wfield input{width:100%;padding:11px 13px;border:1.5px solid #ddd;border-radius:7px;font-size:14px;font-family:inherit;color:#333;}
+.wfield input:focus{border-color:#1a1a2e;outline:none;}
+.wfield small{color:#bbb;font-size:11px;display:block;margin-top:4px;}
+.wbtn{width:100%;padding:13px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;}
+.wbtn:hover{background:#0d3b70;}
+.werr{background:#fff0f0;border:1px solid #ffa0a0;color:#c0392b;padding:10px 14px;border-radius:6px;font-size:13px;margin-top:10px;display:none;}
+.proc{text-align:center;padding:20px 0;}
+.proc-icon{font-size:46px;color:#1a1a2e;margin-bottom:14px;}
+.proc-txt{font-weight:700;font-size:16px;color:#1a1a2e;margin-bottom:18px;}
+.prog-wrap{background:#e5e7eb;border-radius:50px;height:8px;overflow:hidden;margin-bottom:12px;}
+.prog-bar{height:100%;width:0;background:linear-gradient(90deg,#1a1a2e,#0d3b70);border-radius:50px;transition:width 0.5s;}
+.proc-sub{font-size:13px;color:#888;}
+.decl{text-align:center;padding:8px 0;}
+.decl-icon{font-size:54px;color:#dc2626;margin-bottom:10px;}
+.decl h4{font-size:18px;color:#dc2626;margin-bottom:8px;}
+.decl > p{font-size:13px;color:#555;margin-bottom:12px;}
+.decl-reason{background:#fffbeb;border:1px solid #f59e0b;border-radius:8px;padding:14px;font-size:13px;color:#78350f;text-align:left;margin-bottom:12px;line-height:1.8;}
+.decl-reason i{color:#f59e0b;margin-right:6px;}
+.abox{display:flex;align-items:flex-start;gap:12px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:14px;text-align:left;font-size:13px;margin-bottom:16px;}
+.abox .fab{font-size:28px;color:#25d366;margin-top:2px;}
+.abox a{color:#1d4ed8;text-decoration:none;}
+.btn-retry{background:#f5f5f5;border:1px solid #ddd;padding:10px 22px;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit;}
+.btn-retry:hover{background:#1a1a2e;color:#fff;}
+.dfooter{text-align:center;padding:18px;font-size:12px;color:#aaa;border-top:1px solid #e5e7eb;}
+.dfooter a{color:#aaa;text-decoration:none;}
+@media(max-width:1024px){.dcards{grid-template-columns:repeat(2,1fr);}.dlower{grid-template-columns:1fr;}}
+@media(max-width:600px){.dcards{grid-template-columns:1fr 1fr;}.dwrap{padding:16px;}.lcard{padding:30px 20px;}}
+</style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <div class="logo">
-                <a href="#"><img src="https://clientportal.jse.co.za/Style%20Library/Images/logo-black.svg" alt="JSE Logo"></a>
-            </div>
-            
-            <div class="mobile-toggle" id="mobile-menu">
-                <i class="fa fa-bars"></i>
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="#">Listed Companies</a></li>
-                <li class="dropdown">
-                    <a href="#">Communications <i class="fa fa-chevron-down"></i></a>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Technical Library <i class="fa fa-chevron-down"></i></a>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Reports <i class="fa fa-chevron-down"></i></a>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Portals <i class="fa fa-chevron-down"></i></a>
-                </li>
-                <li class="utility-link"><a href="#">JSE Website</a></li>
-                <li><a href="#"><i class="fa fa-search"></i></a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <header class="hero">
-       <div class="fill" style="background-image: url('Images/jse.jpg');">
-
-            <div class="container">
-                <div class="hero-text">
-                    <h1></h1>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="container">
-            <h2>Portal Overview</h2>
-            <p>Welcome to the Johannesburg Stock Exchange Client Portal.
-                Tap into Africa’s trusted capital marketplace
-
-Raising capital shouldn’t be complicated or out of reach. If your business is growing but needs funding, the JSE gives you the platform and visibility to do it right.
-
-The JSE’s Capital Markets enable innovation, capital raising and shared prosperity. As a leading global exchange, the JSE co-creates and unlocks value through innovative products and services that meet the needs of our clients.
-
-                Driving Sustainable Wealth Through Strategic Investment Excellence
-
-At our core, we believe that true investment success is built on discipline, insight, and long-term vision. Inspired by the strength and integrity of South Africa’s financial markets, we are committed to delivering intelligent investment solutions that create lasting value for individuals, businesses, and institutions.
-
-Our approach combines rigorous market research, data-driven analysis, and strategic risk management to identify opportunities across diverse asset classes. We do not chase trends — we build portfolios designed to withstand volatility, adapt to changing market conditions, and generate sustainable growth over time.
-
-Transparency, accountability, and trust form the foundation of every relationship we build. We work closely with our clients to understand their goals, risk tolerance, and financial aspirations, crafting tailored strategies that align with both present needs and future ambitions.
-
-In a rapidly evolving global economy, we embrace innovation while remaining grounded in sound financial principles. Through disciplined execution and forward-thinking strategy, we aim not only to preserve capital but to grow it responsibly and consistently.
-
-Partner with us to invest with confidence — guided by expertise, driven by integrity, and focused on long-term prosperity.
-            </p>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">
-                <img src="https://clientportal.jse.co.za/Style%20Library/Images/logo-black.svg" alt="JSE Logo">
-            </div>
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>About JSE</h4>
-                    <ul>
-                        <li><a href="#">Our Business</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Disclaimer</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <p>Tel: <a href="tel:+27115207000">+27 83 624 0290</a></p>
-                    <p>Email: <a href="mailto:jsecompany72@gmail.com">jsecompany72@gmail.com</a></p>
-                    <div class="address">
-                        JSE Limited<br>
-                        One Exchange Square<br>
-                        Gwen Lane, Sandown
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Subscribe to JSE</h4>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>Copyright © 2026 JSE | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
-            </div>
-        </div>
-    </footer>
-<section class="contact-section">
-    <div class="container">
-        <div class="contact-box">
-            <h2>Send us a Message</h2>
-            <form id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="userName" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="userMessage" rows="5" placeholder="How can we help you?" required></textarea>
-                </div>
-                <button type="button" class="btn-send" onclick="sendToWhatsApp()">
-                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
-                </button>
-            </form>
-        </div>
+<div id="loginPage">
+  <div class="lcard">
+    <div class="lcard-logo">
+      <img src="https://clientportal.jse.co.za/Style%20Library/Images/logo-black.svg" alt="JSE Logo">
     </div>
-</section>
+    <h2>Client Portal Login</h2>
+    <p class="lcard-sub">Enter your credentials to access your account</p>
+    <div class="lerr" id="lerr"><i class="fa fa-exclamation-circle"></i> Invalid username or password.</div>
+    <div class="lfield">
+      <label>Username</label>
+      <input type="text" id="lu" placeholder="Enter your username" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="lfield">
+      <label>Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="lp" placeholder="Enter your password" autocomplete="off">
+        <span class="pw-eye" onclick="togglePw()"><i class="fa fa-eye" id="eyeIco"></i></span>
+      </div>
+    </div>
+    <button class="lbtn" onclick="doLogin()">
+      <span id="lbtnTxt">Login to Portal</span>
+      <i class="fa fa-spinner fa-spin" id="lspin" style="display:none;"></i>
+    </button>
+    <p class="lnote">For access issues, contact your agent.</p>
+  </div>
+</div>
 
-
+<div id="dashPage">
+  <nav class="dnav">
+    <div class="dnav-inner">
+      <img src="https://clientportal.jse.co.za/Style%20Library/Images/logo-black.svg" class="dnav-logo" alt="JSE">
+      <div class="dnav-right">
+        <span class="dnav-user"><i class="fa fa-user-circle"></i> Welcome, <strong id="dName"></strong></span>
+        <button class="dbtn-out" onclick="doLogout()"><i class="fa fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+  </nav>
+  <div class="dwrap">
+    <div class="dcards">
+      <div class="dcard main">
+        <div class="dcard-lbl">Total Portfolio Value</div>
+        <div class="dcard-val" id="dPort">R 0.00</div>
+        <span class="dbadge g"><i class="fa fa-arrow-up"></i> +12.4% this year</span>
+      </div>
+      <div class="dcard">
+        <div class="dcard-lbl">Available Balance</div>
+        <div class="dcard-val sm" id="dAvail">R 0.00</div>
+        <span class="dbadge b"><i class="fa fa-wallet"></i> Investable</span>
+      </div>
+      <div class="dcard">
+        <div class="dcard-lbl">Total Returns / Profit</div>
+        <div class="dcard-val sm" id="dRet">R 0.00</div>
+        <span class="dbadge g"><i class="fa fa-chart-line"></i> All time</span>
+      </div>
+      <div class="dcard">
+        <div class="dcard-lbl">Account Status</div>
+        <div class="dcard-val grn">Active</div>
+        <span class="dbadge g"><i class="fa fa-shield-alt"></i> Verified</span>
+      </div>
+    </div>
+    <div class="dlower">
+      <div class="dpanel">
+        <div class="dpanel-title"><i class="fa fa-chart-pie"></i> Investment Holdings</div>
+        <table class="dtable">
+          <thead><tr><th>Fund / Asset</th><th>Units</th><th>Unit Price</th><th>Market Value</th><th>Return</th></tr></thead>
+          <tbody id="hTbody"></tbody>
+        </table>
+      </div>
+      <div class="dpanel">
+        <div class="dpanel-title"><i class="fa fa-money-bill-wave"></i> Withdraw Funds</div>
+        <div id="wStep1">
+          <div class="wnote">Minimum withdrawal: <strong id="wMin">R 500.00</strong></div>
+          <div class="wfield">
+            <label>Withdrawal Code</label>
+            <input type="text" id="wCode" placeholder="Enter your withdrawal code">
+            <small>Contact your agent if you do not have a code.</small>
+          </div>
+          <div class="wfield">
+            <label>Amount (ZAR)</label>
+            <input type="number" id="wAmt" placeholder="Enter amount">
+          </div>
+          <div class="wfield">
+            <label>Bank Account Number</label>
+            <input type="text" id="wBank" placeholder="Destination account number">
+          </div>
+          <button class="wbtn" onclick="startWithdraw()"><i class="fa fa-paper-plane"></i> Submit Withdrawal Request</button>
+          <div class="werr" id="werr"></div>
+        </div>
+        <div id="wProc" style="display:none;" class="proc">
+          <div class="proc-icon"><i class="fa fa-spinner fa-spin"></i></div>
+          <div class="proc-txt">Processing your withdrawal...</div>
+          <div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
+          <div class="proc-sub" id="procStat">Connecting to secure gateway...</div>
+        </div>
+        <div id="wDecl" style="display:none;" class="decl">
+          <div class="decl-icon"><i class="fa fa-times-circle"></i></div>
+          <h4>Withdrawal Declined</h4>
+          <p>Your withdrawal request could not be processed.</p>
+          <div class="decl-reason">
+            <i class="fa fa-exclamation-triangle"></i>
+            <strong>Outstanding Fee Detected</strong><br>
+            There is an outstanding account fee of <strong>R 5,100.00</strong> that must be paid before any withdrawal can be processed. Please contact your agent to resolve this.
+          </div>
+          <div class="abox">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+              <strong>Contact Your Agent</strong><br>
+              <a href="https://wa.me/27836240290" target="_blank">WhatsApp: +27 83 624 0290</a><br>
+              <a href="mailto:jsecompany72@gmail.com">jsecompany72@gmail.com</a>
+            </div>
+          </div>
+          <button class="btn-retry" onclick="resetW()"><i class="fa fa-redo"></i> Try Again</button>
+        </div>
+      </div>
+    </div>
+    <div class="dpanel">
+      <div class="dpanel-title"><i class="fa fa-history"></i> Recent Transactions</div>
+      <table class="dtable">
+        <thead><tr><th>Date</th><th>Description</th><th>Type</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody id="tTbody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="dfooter">&#169; 2026 JSE Client Portal &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms &amp; Conditions</a></div>
+</div>
 
 <script>
-    function sendToWhatsApp() {
-        const name = document.getElementById('userName').value;
-        const message = document.getElementById('userMessage').value;
-        const phoneNumber = "27836240290"; // Replace with your actual number
+var U = {
+  "Maree2026": {
+    pw: "jse1836",
+    name: "Andre Maree",
+    portfolio: 485320,
+    available: 62450,
+    profit: 61700999.97,
+    minW: 30000000,
+    h: [
+      {f:"JSE Top 40 ETF", u:450, p:412.50, v:185625, r:"+18.2%"},
+      {f:"Satrix MSCI World", u:320, p:298.75, v:95600, r:"+22.4%"},
+      {f:"Coronation Equity", u:580, p:183.20, v:106256, r:"+9.6%"},
+      {f:"Old Mutual Balanced", u:210, p:265.40, v:55734, r:"+7.1%"},
+      {f:"Nedbank Infrastructure", u:180, p:148.00, v:26640, r:"+5.3%"}
+    ],
+    t: [
+      {d:"2026-02-10", ds:"Dividend JSE Top 40", tp:"Credit", a:"+R 3,240.00"},
+      {d:"2026-01-28", ds:"Monthly Investment Satrix", tp:"Debit", a:"-R 5,000.00"},
+      {d:"2026-01-15", ds:"Fund Performance Bonus", tp:"Credit", a:"+R 1,890.00"},
+      {d:"2025-12-31", ds:"Year-End Statement Fee", tp:"Debit", a:"-R 120.00"},
+      {d:"2025-12-20", ds:"Dividend Coronation Equity", tp:"Credit", a:"+R 2,100.00"}
+    ]
+  },
+  "client02": {
+    pw: "invest2026",
+    name: "Naledi Dlamini",
+    portfolio: 212600,
+    available: 28300,
+    profit: 19870,
+    minW: 500,
+    h: [
+      {f:"Satrix Dividend Plus", u:700, p:168.50, v:117950, r:"+14.7%"},
+      {f:"Allan Gray Equity", u:260, p:231.00, v:60060, r:"+11.2%"},
+      {f:"Absa Property Fund", u:315, p:75.20, v:23688, r:"+6.8%"}
+    ],
+    t: [
+      {d:"2026-02-12", ds:"Dividend Satrix Dividend Plus", tp:"Credit", a:"+R 2,100.00"},
+      {d:"2026-01-20", ds:"Monthly Investment Allan Gray", tp:"Debit", a:"-R 3,500.00"},
+      {d:"2026-01-05", ds:"Account Maintenance Fee", tp:"Debit", a:"-R 95.00"}
+    ]
+  },
+  "admin": {
+    pw: "admin123",
+    name: "JSE Administrator",
+    portfolio: 1024500,
+    available: 145000,
+    profit: 112400,
+    minW: 500,
+    h: [
+      {f:"JSE Top 40 ETF", u:2100, p:412.50, v:866250, r:"+18.2%"},
+      {f:"Global Diversified Fund", u:450, p:352.00, v:158400, r:"+25.1%"}
+    ],
+    t: [
+      {d:"2026-02-15", ds:"Large Portfolio Rebalance", tp:"Debit", a:"-R 50,000.00"},
+      {d:"2026-02-01", ds:"Q1 Dividend Distribution", tp:"Credit", a:"+R 12,400.00"}
+    ]
+  }
+};
 
-        if (name && message) {
-            // Encode text for URL
-            const url = `https://wa.me/${phoneNumber}?text=` 
-                + `*Name:* ${encodeURIComponent(name)}%0a`
-                + `*Message:* ${encodeURIComponent(message)}`;
-            
-            window.open(url, '_blank');
-        } else {
-            alert("Please fill in both fields.");
-        }
+var AU = null;
+
+function fmt(n) {
+  return "R " + Number(n).toLocaleString("en-ZA", {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function togglePw() {
+  var i = document.getElementById("lp");
+  var e = document.getElementById("eyeIco");
+  if (i.type === "password") { i.type = "text"; e.className = "fa fa-eye-slash"; }
+  else { i.type = "password"; e.className = "fa fa-eye"; }
+}
+
+function doLogin() {
+  var u = document.getElementById("lu").value.trim();
+  var p = document.getElementById("lp").value.trim();
+  var err = document.getElementById("lerr");
+  var txt = document.getElementById("lbtnTxt");
+  var spin = document.getElementById("lspin");
+  err.style.display = "none";
+  txt.style.display = "none";
+  spin.style.display = "inline-block";
+  setTimeout(function() {
+    txt.style.display = "inline";
+    spin.style.display = "none";
+    if (U[u] && U[u].pw === p) {
+      AU = U[u];
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("dashPage").style.display = "block";
+      buildDash();
+    } else {
+      err.style.display = "block";
     }
+  }, 1500);
+}
+
+function doLogout() {
+  AU = null;
+  document.getElementById("dashPage").style.display = "none";
+  document.getElementById("loginPage").style.display = "flex";
+  document.getElementById("lu").value = "";
+  document.getElementById("lp").value = "";
+  document.getElementById("lerr").style.display = "none";
+  resetW();
+}
+
+function buildDash() {
+  document.getElementById("dName").textContent = AU.name;
+  document.getElementById("dPort").textContent = fmt(AU.portfolio);
+  document.getElementById("dAvail").textContent = fmt(AU.available);
+  document.getElementById("dRet").textContent = fmt(AU.profit);
+  document.getElementById("wMin").textContent = fmt(AU.minW);
+  document.getElementById("wAmt").placeholder = "Minimum " + fmt(AU.minW);
+  var hb = document.getElementById("hTbody");
+  hb.innerHTML = "";
+  for (var i = 0; i < AU.h.length; i++) {
+    var x = AU.h[i];
+    hb.innerHTML += "<tr><td><strong>" + x.f + "</strong></td><td>" + x.u.toLocaleString() + "</td><td>" + fmt(x.p) + "</td><td><strong>" + fmt(x.v) + "</strong></td><td class='pos'>" + x.r + "</td></tr>";
+  }
+  var tb = document.getElementById("tTbody");
+  tb.innerHTML = "";
+  for (var j = 0; j < AU.t.length; j++) {
+    var t = AU.t[j];
+    var c = t.tp === "Credit" ? "#16a34a" : "#dc2626";
+    tb.innerHTML += "<tr><td>" + t.d + "</td><td>" + t.ds + "</td><td style='color:" + c + ";font-weight:700'>" + t.tp + "</td><td style='color:" + c + ";font-weight:700'>" + t.a + "</td><td><span style='background:#dcfce7;color:#16a34a;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700'>Completed</span></td></tr>";
+  }
+}
+
+function startWithdraw() {
+  var code = document.getElementById("wCode").value.trim();
+  var amt = parseFloat(document.getElementById("wAmt").value);
+  var bank = document.getElementById("wBank").value.trim();
+  var errEl = document.getElementById("werr");
+  errEl.style.display = "none";
+  if (!code || code.length < 4) { errEl.textContent = "Please enter a valid withdrawal code."; errEl.style.display = "block"; return; }
+  if (!bank) { errEl.textContent = "Please enter a destination bank account number."; errEl.style.display = "block"; return; }
+  if (isNaN(amt) || amt < AU.minW) { errEl.textContent = "Minimum withdrawal amount is " + fmt(AU.minW) + "."; errEl.style.display = "block"; return; }
+  document.getElementById("wStep1").style.display = "none";
+  document.getElementById("wProc").style.display = "block";
+  var steps = ["Connecting to secure gateway...","Verifying account credentials...","Checking compliance status...","Contacting payment network...","Finalising request..."];
+  var bar = document.getElementById("progBar");
+  var stat = document.getElementById("procStat");
+  var s = 0;
+  var iv = setInterval(function() {
+    s++;
+    bar.style.width = (s * 20) + "%";
+    if (steps[s]) stat.textContent = steps[s];
+    if (s >= 5) {
+      clearInterval(iv);
+      setTimeout(function() {
+        document.getElementById("wProc").style.display = "none";
+        document.getElementById("wDecl").style.display = "block";
+      }, 600);
+    }
+  }, 900);
+}
+
+function resetW() {
+  var s1 = document.getElementById("wStep1"); if (s1) s1.style.display = "block";
+  var sp = document.getElementById("wProc"); if (sp) sp.style.display = "none";
+  var sd = document.getElementById("wDecl"); if (sd) sd.style.display = "none";
+  var wc = document.getElementById("wCode"); if (wc) wc.value = "";
+  var wa = document.getElementById("wAmt"); if (wa) wa.value = "";
+  var wb = document.getElementById("wBank"); if (wb) wb.value = "";
+  var pb = document.getElementById("progBar"); if (pb) pb.style.width = "0";
+  var ps = document.getElementById("procStat"); if (ps) ps.textContent = "Connecting to secure gateway...";
+  var we = document.getElementById("werr"); if (we) we.style.display = "none";
+}
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Enter" && document.getElementById("loginPage").style.display !== "none") doLogin();
+});
 </script>
-    <a href="https://wa.me/27836240290" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-    <span class="tooltip">Chat with us</span>
-</a>
 </body>
-
 </html>
-
-
-
